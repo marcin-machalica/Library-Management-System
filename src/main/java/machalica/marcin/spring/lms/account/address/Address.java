@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -25,13 +26,17 @@ public class Address {
 	@Column(name = "address_id")
 	private long addressId;
 	@NotNull
+	@Size(min = 1, max = 30)
 	private String country;
 	@NotNull
+	@Size(min = 1, max = 50)
 	private String city;
 	@NotNull
+	@Size(min = 1, max = 20)
 	@Column(name = "postal_code")
 	private String postalCode;
 	@NotNull
+	@Size(min = 1, max = 100)
 	private String street;
 
 	@OneToOne(mappedBy = "address")

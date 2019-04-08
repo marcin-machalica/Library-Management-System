@@ -24,6 +24,7 @@ import machalica.marcin.spring.lms.account.address.Address;
 import machalica.marcin.spring.lms.account.address.AddressRepository;
 import machalica.marcin.spring.lms.account.personalinfo.PersonalInfo;
 import machalica.marcin.spring.lms.account.personalinfo.PersonalInfoRepository;
+import machalica.marcin.spring.lms.exception.ResourceNotFoundException;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -46,7 +47,7 @@ public class AccountTest {
 		verify(accountRepository).findById(id);
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expected = ResourceNotFoundException.class)
 	public void getAccountById_IllegalArgumentException() {
 		Account account = accountService.getAccountById(id);
 	}
@@ -67,7 +68,7 @@ public class AccountTest {
 		verify(accountRepository).delete(account);
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expected = ResourceNotFoundException.class)
 	public void deleteAccountById_IllegalArgumentException() {
 		Account account = accountService.deleteAccountById(id);
 	}

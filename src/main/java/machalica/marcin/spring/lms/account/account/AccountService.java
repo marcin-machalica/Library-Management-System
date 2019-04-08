@@ -9,6 +9,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import machalica.marcin.spring.lms.exception.ResourceNotFoundException;
+
 @Service
 @Transactional
 public class AccountService {
@@ -36,9 +38,9 @@ public class AccountService {
 
 	public Account getAccountById(long accountId) {
 		return accountRepository.findById(accountId)
-				.orElseThrow(() -> new IllegalArgumentException("Account of id " + accountId + " was not found"));
+				.orElseThrow(() -> new ResourceNotFoundException("Account", accountId));
 	}
-	
+
 	public List<Account> getAllAccounts() {
 		List<Account> accounts = new ArrayList<Account>();
 		accountRepository.findAll().forEach(accounts::add);
@@ -52,7 +54,7 @@ public class AccountService {
 		acc.setLogin(account.getLogin());
 		acc.setPassword(account.getPassword());
 		acc.setPersonalInfo(account.getPersonalInfo());
-		
+
 		return accountRepository.save(acc);
 	}
 

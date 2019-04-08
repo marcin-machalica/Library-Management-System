@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import machalica.marcin.spring.lms.account.address.AddressRepository;
+import machalica.marcin.spring.lms.exception.ResourceNotFoundException;
 
 @Service
 @Transactional
@@ -35,7 +36,7 @@ public class PersonalInfoService {
 
 	public PersonalInfo getPersonalInfoById(long personalInfoId) {
 		return personalInfoRepository.findById(personalInfoId).orElseThrow(
-				() -> new IllegalArgumentException("PersonalInfo of id " + personalInfoId + " was not found"));
+				() -> new ResourceNotFoundException("PersonalInfo", personalInfoId));
 	}
 
 }

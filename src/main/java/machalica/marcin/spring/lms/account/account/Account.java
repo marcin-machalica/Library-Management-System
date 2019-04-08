@@ -10,7 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Size;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -27,12 +30,16 @@ public class Account {
 	@Column(name = "account_id")
 	private long accountId;
 	@NotNull
+	@Size(min = 1, max = 20)
 	private String login;
 	@NotNull
+	@Size(min = 1, max = 20)
 	private String password;
 	@NotNull
+	@Email
 	private String email;
 	@NotNull
+	@PastOrPresent
 	private Date date;
 
 	// books
