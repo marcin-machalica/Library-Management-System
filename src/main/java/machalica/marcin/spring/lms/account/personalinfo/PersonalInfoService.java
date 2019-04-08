@@ -1,9 +1,11 @@
-package machalica.marcin.spring.lms.account;
+package machalica.marcin.spring.lms.account.personalinfo;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import machalica.marcin.spring.lms.account.address.AddressRepository;
 
 @Service
 @Transactional

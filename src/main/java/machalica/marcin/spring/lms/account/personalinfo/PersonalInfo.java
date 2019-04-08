@@ -1,4 +1,4 @@
-package machalica.marcin.spring.lms.account;
+package machalica.marcin.spring.lms.account.personalinfo;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,9 +11,13 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import machalica.marcin.spring.lms.account.account.Account;
+import machalica.marcin.spring.lms.account.address.Address;
 
 @Entity
 @Getter
@@ -34,10 +38,14 @@ public class PersonalInfo {
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "address_id", referencedColumnName = "address_id", nullable = false)
+	@NotNull
 	private Address address;
+	
+	@OneToOne(mappedBy = "personalInfo")
+	@JsonIgnore
+	private Account account;
 
-	protected PersonalInfo() {
-	}
+	protected PersonalInfo() { }
 
 	public PersonalInfo(@NotNull String firstName, @NotNull String lastName) {
 		this.firstName = firstName;

@@ -14,11 +14,11 @@ import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import machalica.marcin.spring.lms.account.Address;
-import machalica.marcin.spring.lms.account.AddressRepository;
-import machalica.marcin.spring.lms.account.PersonalInfo;
-import machalica.marcin.spring.lms.account.PersonalInfoRepository;
-import machalica.marcin.spring.lms.account.PersonalInfoService;
+import machalica.marcin.spring.lms.account.address.Address;
+import machalica.marcin.spring.lms.account.address.AddressRepository;
+import machalica.marcin.spring.lms.account.personalinfo.PersonalInfo;
+import machalica.marcin.spring.lms.account.personalinfo.PersonalInfoRepository;
+import machalica.marcin.spring.lms.account.personalinfo.PersonalInfoService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

@@ -1,4 +1,4 @@
-package machalica.marcin.spring.lms.account;
+package machalica.marcin.spring.lms.account.address;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,9 +8,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import machalica.marcin.spring.lms.account.personalinfo.PersonalInfo;
 
 @Entity
 @Getter
@@ -32,6 +35,7 @@ public class Address {
 	private String street;
 
 	@OneToOne(mappedBy = "address")
+	@JsonIgnore
 	private PersonalInfo personalInfo;
 
 	protected Address() { }
